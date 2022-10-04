@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.0.1
+## v0.0.2
 
 ### Missing
 
@@ -10,12 +10,11 @@
 
 ### Added
 
-- Basic root documents.
-  - `~/CONTRIBUTING.md`
-  - `~/CHANGELOG.md`
-  - `~/LICENSE`
-
-- Starting Ana functions.
-  - `~/src/dictionary.ts`
+- Added `Partial<T>` to `applyDefaults()` and documented the function.
   - `~/src/utils.ts`
-  - `~/mod.ts`
+
+- Added .obsidian and .DS_Store .gitignore
+  - `~/.gitignore`
+
+- Better Reamde.
+  - `~/README.md`

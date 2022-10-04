@@ -6,27 +6,33 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * Inside Ana, there are interfaces that start with a lowercase `i`, e.g. `iAnaConfiguration`. These are input interfaces and have the same properties as their equivalent without the `i`. So then, what is the difference between each other? All of the properties of an input interface must be optional. Because we can't force the developer to input all properties of a interface every time. In other words, if a developer wants to configure Ana, it shouldn't be a requirement to add all AnaConfiguration properties only to change one of them.
+ * This function uses an object that stores the default values for an interface `T`. It uses an input object of type Partial<T> with new values to replace matching properties.
  *
- * Then, the problem happens when trying to use the input interface. All values are optional, so it becomes verbose to validate each and everyone of them in a way simmilar to this: `interface.property ? interface.property : undefined`. That's why we need the second non-input interface, where no property is optional. This function transforms `iExample` into `Example` using the default values found in `dExample`.
+ * @param d Default values for non-optional values in interface `T`.
+ * @param i New values recieved with type `Partial<T>`
  *
- * @param defaultParameters To transofrm an input interface into a non-input interface, one needs an Object with default values.
- * @param inputParameters The set properties of the input interface.
+ * @returns An object of type `T` that contains the default `d` values and the new input `i` values.
  *
- * @returns An object of a non-input interface overwritten with input property values.
- *
- * @example
- */
-export function applyDefaults<Type extends {}, iType extends {}>(
-  defaultParameters: Type,
-  inputParameters: iType
-): Type {
-  if (Object.keys(defaultParameters).length === 0) {
-    // Throw error?
-  } else if (Object.keys(inputParameters).length === 0) {
-    return defaultParameters;
+ * @example ```Typescript
+  interface Example {
+    foo: string
+    bar?: string
   }
-  return { ...defaultParameters, ...inputParameters };
+
+  function doSomething(props: Partial<Example>) {
+    const { foo, bar } = applyDefaults({foo: 'foo'}, props)
+  }
+  ```
+ */
+export function applyDefaults<T extends {}>(d: T, i: Partial<T>): T {
+  if (Object.keys(d).length === 0) {
+    throw new Error(
+      'Error in applyDefaults(): If there are no default values, this function must be avoided.'
+    );
+  } else if (Object.keys(i).length === 0) {
+    return d;
+  }
+  return { ...d, ...i };
 }
 
 //  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
