@@ -47,10 +47,12 @@ export function applyDefaults<T extends {}>(d: T, i: Partial<T>): T {
  */
 export const bring = async <ResponseObject>(
   url: string,
-  method?: 'GET' | 'POST'
+  method?: 'GET' | 'POST',
+  body?: BodyInit | null
 ): Promise<ResponseObject> =>
   (await fetch(url, {
     method: method,
+    body: body,
   }).then(async (res) => {
     return await res.json();
   })) as ResponseObject;
