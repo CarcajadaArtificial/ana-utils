@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.0.2
+## v0.0.3
 
 ### Missing
 
@@ -10,11 +10,5 @@
 
 ### Added
 
-- Added `Partial<T>` to `applyDefaults()` and documented the function.
+- Fix for `bring()` function.
   - `~/src/utils.ts`
-
-- Added .obsidian and .DS_Store .gitignore
-  - `~/.gitignore`
-
-- Better Reamde.
-  - `~/README.md`
