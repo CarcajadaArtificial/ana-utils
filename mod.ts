@@ -10,3 +10,4 @@
  */
 export * from './src/dictionary.ts';
 export * from './src/utils.ts';
+export * from './src/docs.ts';

@@ -1,12 +1,11 @@
 # Changelog
 
-## v0.0.4
+## v0.0.5
 
 ### Missing
 
-- Document utility functions.
-  - `~/src/dictionary.ts`
-  - `~/src/utils.ts`
+- `getDocumentation()` function
+  - `~/src/docs.ts`
 
 ### Added
 
